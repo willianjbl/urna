@@ -81,7 +81,9 @@ function anularVoto() {
 }
 
 function reiniciarCampo() {
-    console.log('o voto foi reiniciado!');
+    carregarEtapa();
+    numero = '';
+    etapaAtual = etapaAtual > 0 ? etapaAtual - 1 : 0;
 }
 
 function confirmarVoto() {
