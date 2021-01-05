@@ -1,3 +1,7 @@
+let clickSound = new Audio('assets/audio/click.mp3');
+let confirmaSound = new Audio('assets/audio/confirma.mp3');
+let confirmaFimSound = new Audio('assets/audio/confirmaFim.mp3');
+
 let botoes = document.querySelectorAll('.teclado ul');
 let desc = document.querySelector('.desc span');
 let cargo = document.querySelector('.cargo');
@@ -7,10 +11,11 @@ let instrucoes = document.querySelector('.instrucoes');
 let fotos = document.querySelector('.display-dir');
 let etapaAtual = 0;
 let numero = '';
+let branco = true;
 
 function carregarEtapa() {
+    branco = false;
     let etapa = etapas[etapaAtual];
-
     let numeroHtml = '';
     
     for (let i = 0; i < etapa.numeros; i++) {
@@ -64,10 +69,12 @@ function atualizarInterface() {
 
 function inserirDigito(digito) {
     let cursor = numeros.querySelector('.pisca');
+
     if (cursor) {
         numero += digito;
         cursor.innerHTML = digito;
         cursor.classList.remove('pisca');
+        
         if (cursor.nextElementSibling) {
             cursor.nextElementSibling.classList.add('pisca');
         } else {
@@ -77,23 +84,56 @@ function inserirDigito(digito) {
 }
 
 function anularVoto() {
-    console.log('votou em branco!');
+    if (!numero) {
+        branco = true;
+        desc.style.display = 'block';
+        instrucoes.style.display = 'block';
+        numeros.innerHTML = '';
+        fotos.innerHTML = '';
+        info.innerHTML = '<div class="aviso-grande pisca">VOTO EM BRANCO</div>';
+    }
 }
 
 function reiniciarCampo() {
-    carregarEtapa();
     numero = '';
-    etapaAtual = etapaAtual > 0 ? etapaAtual - 1 : 0;
+
+    carregarEtapa();
 }
 
 function confirmarVoto() {
-    console.log('o voto foi confirmado!');
+    let etapa = etapas[etapaAtual];
+    let confirmado = false;
+
+    if (branco) {
+        confirmado = true;
+    } else if (numero.length === etapa.numeros) {
+        confirmado = true;
+    }
+
+    if (confirmado) {
+        etapaAtual++;
+
+        if (etapas[etapaAtual]) {
+            confirmaSound.play();
+            numero = '';
+            carregarEtapa();
+        } else {
+            confirmaFimSound.play();
+            document.querySelector('.tela').innerHTML = '<div class="aviso-gigante">FIM</div>';
+            setTimeout(() => {
+                location.reload();
+            }, 5000);
+        }
+    }
 }
 
 //  listener de botões
 botoes.forEach(item => {
     item.querySelectorAll('li').forEach(el => {
         el.addEventListener('click', e => {
+            clickSound.currentTime = 0;
+            clickSound.play();
+
             switch (e.target.innerHTML) {
                 case '0':
                 case '1':

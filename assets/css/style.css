@@ -150,10 +150,6 @@ ul.teclas #btn-confirma {
     display: flex;
     align-items: center;
 }
-.aviso-grande {
-    font-size: 2.5em;
-    font-weight: bold;
-}
 
 .display-dir {
     width: 90px;
@@ -191,4 +187,21 @@ ul.teclas #btn-confirma {
     border-top: 2px solid #000;
     font-size: 0.9em;
     padding-left: 5px;
+}
+
+/****************************************************
+*                     TELA
+*****************************************************/
+.aviso-grande {
+    font-size: 2.5em;
+    font-weight: bold;
+}
+
+.aviso-gigante {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    font-size: 4em;
+    font-weight: bold;
 }
