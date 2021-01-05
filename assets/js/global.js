@@ -21,7 +21,7 @@ function montarTabelas() {
         tabelaHtml += '<table>';
         tabelaHtml += '<thead>';
         tabelaHtml += `<tr><th colspan="3" class="cab-cargo">${etapas[i].titulo}</th></tr>`;
-        tabelaHtml += `<tr><th>Número</th><th>Nome</th><th>Partido</th></tr>`;
+        tabelaHtml += '<tr><th>Número</th><th>Nome</th><th>Partido</th></tr>';
         tabelaHtml += '</thead>';
         tabelaHtml += '<tbody>';
         for (let j in etapas[i].candidatos) {
