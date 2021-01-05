@@ -7,48 +7,52 @@
     <link rel="stylesheet" href="assets/css/style.min.css">
 </head>
 <body>
-    <div class="urna">
-        <div class="tela">
-            <div class="display">
-                <div class="display-esq">
-                    <div class="desc">
-                        <span>SEU VOTO PARA</span>
+    <div class="urna-wrap">
+        <div class="urna">
+            <div class="tela">
+                <div class="display">
+                    <div class="display-esq">
+                        <div class="desc">
+                            <span>SEU VOTO PARA</span>
+                        </div>
+                        <div class="cargo"></div>
+                        <div class="numeros">
+                            <ul>
+                            </ul>
+                        </div>
+                        <div class="info"></div>
                     </div>
-                    <div class="cargo"></div>
-                    <div class="numeros">
-                        <ul>
-                        </ul>
-                    </div>
-                    <div class="info"></div>
+                    <div class="display-dir"></div>
                 </div>
-                <div class="display-dir"></div>
+                <div class="instrucoes">
+                    Aperte a tecla:<br>
+                    <strong>CONFIRMA</strong> para <strong>CONFIRMAR</strong> este voto<br>
+                    <strong>CORRIGE</strong> para <strong>REINICIAR</strong> este voto
+                </div>
             </div>
-            <div class="instrucoes">
-                Aperte a tecla:<br>
-                <strong>CONFIRMA</strong> para <strong>CONFIRMAR</strong> este voto<br>
-                <strong>CORRIGE</strong> para <strong>REINICIAR</strong> este voto
+            <div class="teclado">
+                <ul class="teclas-numericas">
+                    <li>1</li>
+                    <li>2</li>
+                    <li>3</li>
+                    <li>4</li>
+                    <li>5</li>
+                    <li>6</li>
+                    <li>7</li>
+                    <li>8</li>
+                    <li>9</li>
+                    <li>0</li>
+                </ul>
+                <ul class="teclas">
+                    <li id="btn-branco">BRANCO</li>
+                    <li id="btn-corrige">CORRIGE</li>
+                    <li id="btn-confirma">CONFIRMA</li>
+                </ul>
             </div>
-        </div>
-        <div class="teclado">
-            <ul class="teclas-numericas">
-                <li>1</li>
-                <li>2</li>
-                <li>3</li>
-                <li>4</li>
-                <li>5</li>
-                <li>6</li>
-                <li>7</li>
-                <li>8</li>
-                <li>9</li>
-                <li>0</li>
-            </ul>
-            <ul class="teclas">
-                <li id="btn-branco">BRANCO</li>
-                <li id="btn-corrige">CORRIGE</li>
-                <li id="btn-confirma">CONFIRMA</li>
-            </ul>
         </div>
     </div>
+
+    <div class="lista-candidatos"></div>
 
     <script src="assets/js/etapas.min.js"></script>
     <script src="assets/js/global.min.js"></script>

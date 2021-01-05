@@ -13,6 +13,27 @@ let etapaAtual = 0;
 let numero = '';
 let branco = true;
 
+function montarTabelas() {
+    let tabelas = document.querySelector('.lista-candidatos');
+    tabelaHtml = '';
+
+    for (let i in etapas) {
+        tabelaHtml += '<table>';
+        tabelaHtml += '<thead>';
+        tabelaHtml += `<tr><th colspan="3" class="cab-cargo">${etapas[i].titulo}</th></tr>`;
+        tabelaHtml += `<tr><th>Número</th><th>Nome</th><th>Partido</th></tr>`;
+        tabelaHtml += '</thead>';
+        tabelaHtml += '<tbody>';
+        for (let j in etapas[i].candidatos) {
+            tabelaHtml += `<tr><td>${etapas[i].candidatos[j].numero}</td><td>${etapas[i].candidatos[j].nome}</td><td>${etapas[i].candidatos[j].partido}</td></tr>`;
+        }
+        tabelaHtml += '</tbody>';
+        tabelaHtml += '</table>';
+    }
+
+    tabelas.innerHTML = tabelaHtml;
+}
+
 function carregarEtapa() {
     branco = false;
     let etapa = etapas[etapaAtual];
@@ -161,4 +182,5 @@ botoes.forEach(item => {
     });
 });
 
+montarTabelas();
 carregarEtapa();
